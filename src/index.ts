@@ -1,9 +1,8 @@
 import { app } from "./app";
 import { pool } from "./db";
 
-const port = 5000;
+const port =  process.env["PORT"] || 5000;
 
-// Manejar cierre de la aplicación
 const gracefulShutdown = () => {
   pool.end(() => {
     console.log("\nApplication ended gracefully");
