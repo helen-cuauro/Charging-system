@@ -18,6 +18,7 @@ export class ApiError extends Error {
   }
 }
 
+
 export default function errorHandler(
   error: Error,
   _req: Request,
@@ -39,13 +40,23 @@ export default function errorHandler(
       },
     });
   } else if (error instanceof ApiError) {
-    res.status(error.status).json({
-      ok: false,
-      error: {
-        message: error.message,
-        details: error.details,
-      },
-    });
+    if (error.status === 401) {
+      res.status(401).json({
+        ok: false,
+        error: {
+          message: "Credenciales inválidas",
+          details: error.details,
+        },
+      });
+    } else {
+      res.status(error.status).json({
+        ok: false,
+        error: {
+          message: error.message,
+          details: error.details,
+        },
+      });
+    }
   } else {
     console.error(error);
     res.status(500).json({

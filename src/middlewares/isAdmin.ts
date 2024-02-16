@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { jwtSecret } from "../utils/utils";
 import { ApiError } from "./error";
 
-// Extendemos el objeto Request para incluir la propiedad user
 declare global {
   namespace Express {
     interface Request {
@@ -12,7 +12,6 @@ declare global {
   }
 }
 
-const jwtSecret = "ultra-secret";
 
 export function isAdminHandler(
   req: Request,

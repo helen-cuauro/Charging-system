@@ -1,6 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import { validateCredentials } from "../services/user-services";
+import { validateCredentials } from "../services/auth-services";
 
 const authRouter = express.Router();
 

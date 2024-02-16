@@ -15,6 +15,7 @@
     "db:seed": "ts-node src/db/scripts/dbSeed.ts"
   },
   "dependencies": {
+    "@types/supertest": "^6.0.2",
     "bcrypt": "^5.1.1",
     "csv-parse": "^5.5.3",
     "csv-parser": "^3.0.0",
@@ -24,7 +25,9 @@
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
     "pg": "^8.11.3",
+    "supertest": "^6.3.4",
     "umzug": "^3.5.1",
+    "vitest": "^1.2.2",
     "zod": "^3.22.4",
     "zod-csv": "^0.0.8"
   },
@@ -35,7 +38,9 @@
     "@types/multer": "^1.4.11",
     "@types/node": "^20.11.5",
     "@types/pg": "^8.10.9",
+    "@types/sinon": "^17.0.3",
     "nodemon": "^3.0.3",
+    "sinon": "^17.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },

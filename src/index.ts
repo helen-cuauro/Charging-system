@@ -1,13 +1,17 @@
-import express from "express";
-import authRouter from "./routers/auth-router";
-import fileRouter from "./routers/cvs-router";
+import { app } from "./app";
+import { pool } from "./db";
 
-const app = express();
 const port = 5000;
 
-app.use(express.json());
-app.use("/", authRouter);
-app.use("/", fileRouter);
+// Manejar cierre de la aplicación
+const gracefulShutdown = () => {
+  pool.end(() => {
+    console.log("\nApplication ended gracefully");
+    process.exit(0);
+  });
+};
 
+process.on("SIGINT", gracefulShutdown);
+process.on("SIGTERM", gracefulShutdown);
 
 app.listen(port, () => console.log(`Escuchando al puerto ${port}`));

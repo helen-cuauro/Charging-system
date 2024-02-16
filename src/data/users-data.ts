@@ -1,5 +1,4 @@
 import { pool } from "../db";
-
 import bcrypt from "bcrypt";
 import { UserParams } from "../models/user";
 
@@ -18,8 +17,7 @@ export async function insertUsersIntoDatabase(users: UserParams[]) {
 
       if (existingUser.rows.length === 0) {
         // Si el correo electrónico no existe, procede con la inserción
-        const hashedPassword = await bcrypt.hash("supersecret", 10); // Hash de la contraseña supersecret
-
+        const hashedPassword = await bcrypt.hash("supersecret", 10); 
         const values = [
           user.name,
           user.email,
@@ -34,15 +32,9 @@ export async function insertUsersIntoDatabase(users: UserParams[]) {
         );
       }
     }
-
     return insertedUsers;
   } catch (error) {
     console.error("Error al insertar usuarios en la base de datos:", error);
     throw error;
   }
 }
-
-
-
-
-
