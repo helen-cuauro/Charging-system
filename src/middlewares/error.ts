@@ -45,7 +45,6 @@ export default function errorHandler(
         ok: false,
         error: {
           message: "Credenciales inválidas",
-          details: error.details,
         },
       });
     } else {
